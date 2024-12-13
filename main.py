@@ -29,7 +29,8 @@ class BuddySystem:
                     self.memory_blocks.append(MemoryBlock(buddy_size))  # Add new free block
                     block.size = buddy_size  # Reduce the size of the current block
 
-                block.allocated = True  # Mark the block as allocated
+                # Mark the block as allocated                
+                block.allocated = True  
                 print(f"Allocated {request_size} KB.")
                 return True
 
