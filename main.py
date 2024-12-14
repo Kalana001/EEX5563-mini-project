@@ -29,8 +29,7 @@ class BuddySystem:
                     self.memory_blocks.append(MemoryBlock(buddy_size))  # Add new free block
                     block.size = buddy_size  # Reduce the size of the current block
 
-                # Mark the block as allocated                
-                block.allocated = True  
+                block.allocated = True  # Mark the block as allocated
                 print(f"Allocated {request_size} KB.")
                 return True
 
@@ -54,9 +53,11 @@ if __name__ == "__main__":
     print("Initial Memory State:")
     buddy_system.display_memory()
 
-    # Allow the user to enter exactly three memory requests
-    for i in range(3):
-        request = input(f"Enter memory request size {i + 1} (in KB): ")
+    # Allow the user to enter memory requests until they choose to stop
+    while True:
+        request = input("Enter memory request size (in KB) or type 'exit' to finish: ")
+        if request.lower() == 'exit':
+            break
         try:
             request_size = int(request)
             buddy_system.allocate(request_size)
